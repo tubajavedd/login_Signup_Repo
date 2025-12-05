@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.middleware.csrf import get_token
 import json
 from .decorators import csrf_required
+from django.shortcuts import render
 
 @ensure_csrf_cookie
 def csrf_token_view(request):
@@ -28,6 +29,11 @@ def signup_view(request):
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 
+def signup_view(request):
+    if request.method == "GET":
+        return render(request, "signup.html")
+
+
 @csrf_exempt
 @csrf_required
 def login_view(request):
@@ -46,3 +52,6 @@ def login_view(request):
         return JsonResponse({"error": "Invalid credentials"}, status=400)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
+def login_view(request):
+    if request.method == "GET":
+        return render(request, "login.html")
