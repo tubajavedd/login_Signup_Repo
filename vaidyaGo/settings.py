@@ -25,7 +25,24 @@ SECRET_KEY = 'django-insecure-e*$sh*e9qjw@jx3-!)_y86bxte22w$yv816sogqkr@=ax!&o$)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'tubajavedd.pythonanywhere.com',
+    'www.tubajavedd.pythonanywhere.com',
+
+]
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://tubajavedd.pythonanywhere.com',
+    'https://www.tubajavedd.pythonanywhere.com',
+]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = False
+
 
 
 # Application definition
@@ -38,6 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Auth',
+    'feedback',
+     'rest_framework',
 ]
 
 MIDDLEWARE = [
