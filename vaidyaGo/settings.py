@@ -25,7 +25,22 @@ SECRET_KEY = 'django-insecure-e*$sh*e9qjw@jx3-!)_y86bxte22w$yv816sogqkr@=ax!&o$)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'tubajavedd.pythonanywhere.com',
+    'www.tubajavedd.pythonanywhere.com',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://tubajavedd.pythonanywhere.com',
+    'https://www.tubajavedd.pythonanywhere.com',
+]
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+
+
+
+
 
 
 # Application definition
@@ -38,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Auth',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -48,8 +64,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
 
+CORS_ALLOW_METHODS = ["GET", "POST", "OPTIONS"]
 ROOT_URLCONF = 'vaidyaGo.urls'
 
 TEMPLATES = [
